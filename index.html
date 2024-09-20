@@ -1,16 +1,42 @@
 <!DOCTYPE html>
-    <html lang="ja">
-        <head>
+<html lang="ja">
+<head>
             <meta charset="UTF-8">
             <title>タイトル</title>
-            <meata name="viewport" content="width=device-width,initial-scale=1"></meata>
-            <link rel="stylesheet" href="style.css"> 
-        </head>
-        <body>
-            <button type="button" name="テスト" value="test">テスト</button>
-            <p id="inbox"></p>
-            <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-            <script src="index.js"></script>
-        </body>
-    </html>
+</head>
+<body>
+    <button type="button" name="テスト" value="test">テスト</button>
+    <input type="text" id="text1" value="initial" />
+    <p id="inbox"></p>
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+
+<script>
+
+$(function(){
+
+    $("button").click(function(){
+        let str1 = document.getElementById("text1").value;
+        $.ajax({
+
+            url:'./cgi-bin/sample.py',
+            type:'POST',
+            data:{sent:str1}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+    });
+});
+
+
+</script>
+
+</body>
+</html>
 

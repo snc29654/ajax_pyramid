@@ -8,6 +8,6 @@ import json
 cgitb.enable()
 form=cgi.FieldStorage()
 data=form.getvalue("sent")
-receive=data+"OK"
+receive="receive data="+data
 print("Content-type: text/html\n")
 print(receive)
