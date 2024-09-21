@@ -1,9 +1,10 @@
-#!/〇〇/python3
-# -*- coding: utf-8 -*-
-
 import cgi
 import cgitb
 import json
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
 
 cgitb.enable()
 form=cgi.FieldStorage()
